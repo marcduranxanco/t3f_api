@@ -18,17 +18,24 @@ The project is created using Seuqalize.
 express t3f_api --no-view
 npm install
 ```
-- Sequelize-cli, Sequelize and mysql instalation.
-
-```
-npm install --save sequelize
-npm install --save mysql2
-```
 
 - Sequelize-cli is globally installed.
 
 ```
 npm install sequelize-cli -g
+```
+
+- Sequelize-cli, Sequelize and mysql instalation.
+
+```
+npm install --save sequelize
+npm install --save mysql2
+sequelize init #Init the sequelize structure
+```
+- Install Dotenv.
+
+```
+npm install dotenv --save
 ```
 
 - Git Flow. Main branches.
