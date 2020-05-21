@@ -15,7 +15,8 @@ The project is created using Seuqalize.
 - Project creation.
 
 ```
-express t3f_api --no-view 
+express t3f_api --no-view
+npm install
 ```
 
 - Git Flow. Main branches.
