@@ -33,12 +33,32 @@ npm install --save mysql2
 sequelize init #Init the sequelize structure
 ```
 - Install Dotenv.
-
 ```
 npm install dotenv --save
 ```
 
-- Git Flow. Main branches.
+#### Iitial folder structure
+
+```
+t3f_api/
+├── bin/
+├── controllers/
+├── database/ #Database folders
+│   ├── config/
+│   ├── migrations/
+│   └── seeders/
+├── documentation/ #Markdown documentations files
+├── node_modules/
+├── public/
+│   ├── images/
+│   ├── javascripts/
+│   ├── stylesheets/
+│   └── index.html
+├── routes/
+└── app.js, ...
+```
+
+#### Git Flow Branches
 - - Masrter
 - - Develop
 - - Feature branches (**feature/name-feature**)
