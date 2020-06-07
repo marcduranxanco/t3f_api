@@ -1,17 +1,16 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('custom_media', {
+    return queryInterface.createTable('img', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_img: {
-        type: Sequelize.INTEGER
-      },
-      description: {
+      path: {
+        allowNull: false,
+        unique: true,
         type: Sequelize.STRING
       },
       createdAt: {
@@ -25,6 +24,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('custom_media');
+    return queryInterface.dropTable('img');
   }
 };

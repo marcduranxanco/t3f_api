@@ -9,7 +9,9 @@
 
 ## Commands
 
-- Models generation
+# Models 
+
+- Database generation
 
 ```
 sequelize model:generate --name users --attributes user_name:string,name:string,surname:string,email:string,password:string
@@ -21,7 +23,9 @@ sequelize model:generate --name platforms --attributes name:string,url_platform:
 sequelize model:generate --name img --attributes path:string
 ```
 
-- Migration
+Models update at each model
+
+- Migrate
 ```
 sequelize db:migrate
 ```

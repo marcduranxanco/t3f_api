@@ -5,8 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     url_platform: DataTypes.STRING,
     id_img: DataTypes.INTEGER
   }, {});
+  
+  // associations can be defined here
   platforms.associate = function(models) {
-    // associations can be defined here
+    platforms.belongsTo(models.img, {
+      foreignKey: 'fk_imgId',
+      onUpdate: 'CASCADE',
+    })
   };
   return platforms;
 };

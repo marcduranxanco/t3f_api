@@ -1,22 +1,30 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('media', {
+    return queryInterface.createTable('platforms', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_tmdb: {
-        type: Sequelize.INTEGER
-      },
-      id_custom_media: {
-        type: Sequelize.INTEGER
-      },
-      id_platform: {
+      name: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        unique: true,
+        type: Sequelize.STRING(50)
+      },
+      url_platform: {
+        allowNull: false,
+        unique: true,
+        type: Sequelize.STRING
+      },
+      id_img: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'img',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -29,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('media');
+    return queryInterface.dropTable('platforms');
   }
 };

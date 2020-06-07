@@ -9,7 +9,6 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_name: {
-        allowNull: false,
         unique: true,
         type: Sequelize.STRING(36)
       },

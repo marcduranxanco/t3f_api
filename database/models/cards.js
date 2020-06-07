@@ -4,8 +4,14 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     id_user: DataTypes.INTEGER
   }, {});
-  cards.associate = function(models) {
-    // associations can be defined here
+
+  // Associations are defined here
+  cards.associate = models => {
+    cards.hasOne(models.users, {
+      foreignKey: 'fk_users',
+      onUpdate: 'CASCADE',
+      onDelete: 'NO ACTION'
+    })
   };
   return cards;
 };
