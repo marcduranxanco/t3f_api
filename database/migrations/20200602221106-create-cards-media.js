@@ -19,9 +19,10 @@ module.exports = {
       id_media: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        onUpdate: 'CASCADE',
         references: {
           model: 'media',
-          key: 'id'
+          key: 'id',
         }
       },
       createdAt: {

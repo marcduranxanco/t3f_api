@@ -10,6 +10,7 @@ module.exports = {
       },
       id_img: {
         type: Sequelize.INTEGER,
+        onUpdate: 'CASCADE',
         references: {
           model: 'img',
           key: 'id'

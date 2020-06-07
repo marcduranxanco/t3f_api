@@ -13,6 +13,7 @@ module.exports = {
       },
       id_custom_media: {
         type: Sequelize.INTEGER,
+        onUpdate: 'CASCADE',
         references: {
           model: 'custom_media',
           key: 'id'
@@ -21,6 +22,7 @@ module.exports = {
       id_platform: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        onUpdate: 'CASCADE',
         references: {
           model: 'platforms',
           key: 'id'
