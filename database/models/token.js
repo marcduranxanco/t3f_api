@@ -4,8 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     token: DataTypes.STRING,
     id_user: DataTypes.INTEGER
   }, {});
-  token.associate = function(models) {
-    // associations can be defined here
+  token.associate = models => {
+    token.hasOne(models.users, {
+      foreignKey: 'fk_users',
+      onUpdate: 'CASCADE',
+      onDelete: 'NO ACTION'
+    })
   };
   return token;
 };

@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       token: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
       },
       id_user: {
         type: Sequelize.INTEGER
