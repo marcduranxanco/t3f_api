@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     token: DataTypes.STRING,
     id_user: DataTypes.INTEGER
   }, {});
+
   token.associate = models => {
     token.hasOne(models.users, {
       foreignKey: 'fk_users',
