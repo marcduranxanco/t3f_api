@@ -1,4 +1,4 @@
-const { users } = require('../database/models');
+const { users, token } = require('../database/models');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -38,6 +38,9 @@ const UserController = {
             //Password validation
             const pwMatch = bcrypt.compare(req.body.password,user.password);
             if (!pwMatch) { return res.status(400).send({message: 'Password error.'}) }
+            //JWT Creation
+            const Token = jwt.sign({_id:user._id}, 'ChangeSecret');
+            Token.create({token, UserId:user._id})
         } catch (error) {
             console.error(error);
             res.status(500).send({message: 'There whas a problem trying to login'});
