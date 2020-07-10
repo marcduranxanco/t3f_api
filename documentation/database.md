@@ -21,6 +21,7 @@ sequelize model:generate --name media --attributes id_tmdb:integer,id_custom_med
 sequelize model:generate --name custom_media --attributes id_img:integer,description:string
 sequelize model:generate --name platforms --attributes name:string,url_platform:string,id_img:integer
 sequelize model:generate --name img --attributes path:string
+sequelize model:generate --name token --attributes token:string,id_user:integer
 ```
 
 Models update at each model
@@ -28,4 +29,10 @@ Models update at each model
 - Migrate
 ```
 sequelize db:migrate
+```
+
+- Reverting migrations
+```
+sequelize db:migrate:undo
+sequelize db:migrate:undo:all
 ```
