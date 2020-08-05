@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     token.hasOne(models.users, {
       foreignKey: "id",
       onUpdate: "CASCADE",
-      onDelete: "NO ACTION",
+      onDelete: "CASCADE",
     });
   };
 

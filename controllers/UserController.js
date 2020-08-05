@@ -40,7 +40,15 @@ const UserController = {};
     UserController.update = async (req, res, next) => { res.send('update')};
 
     //DELETE
-    UserController.delete = async (req, res, next) => { res.send('delete') };
+    UserController.delete = async (req, res ) => {
+        await users.findByPk(req.params.id).then ( user => {
+            user.destroy();
+            res.status(200).send('User deleted correctly');
+        })
+        .catch( err => {
+            res.status(400).send('Error deleting user');
+        });
+    };
 
 /* LOGIN */
     UserController.login = async (req, res) => { 
