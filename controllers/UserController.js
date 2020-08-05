@@ -41,12 +41,16 @@ const UserController = {};
 
     //DELETE
     UserController.delete = async (req, res ) => {
-        await users.findByPk(req.params.id).then ( user => {
+        
+        await users.findByPk(req.params.id).then(user => {
             user.destroy();
             res.status(200).send('User deleted correctly');
         })
         .catch( err => {
-            res.status(400).send('Error deleting user');
+            res.status(400).send( {
+                message: 'Error deleting user',
+                error: err.message
+            });
         });
     };
 
