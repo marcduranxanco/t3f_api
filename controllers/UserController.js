@@ -2,13 +2,13 @@ const { users, token } = require('../database/models');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const UserController = {
+/* USERCONTROLLER DEFINITION */
+const UserController = {};
 
-    /* CRUD USERS */
-//Create
-    create(req, res) {
+/* CRUD USERS */
+    //CREATE
+    UserController.create = async (req, res) => {
         req.body.password = bcrypt.hashSync(req.body.password, 10); //Encrypt the user password
-
         users.create(req.body)
         .then(user => res.status(201).send(user))
         .catch(error => {
@@ -17,37 +17,44 @@ const UserController = {
                 message: `There was a problem trying to register the user`
             })
         });
-    },
-//Read
-    getAll(req, res, next) { res.send('Get all')},
-    getOne(req, res, next) { res.send('Get one')},
-//Update
-    update(req, res, next) { res.send('update')},
-//Delete
-    delete(req, res, next) { res.send('delete')},
-    
-    /* LOGIN */
-    async login(req, res, next) { 
+    };
+
+    //READ
+    UserController.getAll = async (req, res, next) => { res.send('Get all')};
+    UserController.getOne = async (req, res, next) => { res.send('Get one')};
+
+    //UPDATE
+    UserController.update = async (req, res, next) => { res.send('update')};
+
+    //DELETE
+    UserController.delete = async (req, res, next) => { res.send('delete') };
+
+/* LOGIN */
+    UserController.login = async (req, res) => { 
         try {
-            //Username validation
+            //Username / Email validation
             const user = await users.findOne({
                 $or:[{email:req.body.email},{user_name:req.body.user_name}]
             })
-            if (!user) { return res.status(400).send({message: 'This user doesn\'t exists.'}) }
-            
+            if (!user) { return res.status(400).send({message: 'This user doesn\'t exists'}) };
+
             //Password validation
-            const pwMatch = bcrypt.compare(req.body.password,user.password);
-            if (!pwMatch) { return res.status(400).send({message: 'Password error.'}) }
+            const pwMatch = bcrypt.compare(req.body.password, user.password);
+            if (!pwMatch) { return res.status(400).send({message: 'Password error'}) }
+
             //JWT Creation
-            const Token = jwt.sign({_id:user._id}, 'ChangeSecret');
-            Token.create({token, UserId:user._id})
+            const jwToken = jwt.sign({ id:user.id}, 'ChangeSecret'); //SignToken, and secret (need to change)
+            
+            token.create({token:jwToken, id_user:user.id});
+            res.send({
+                message: 'User loged: ' + user.user_name,
+                user,
+                jwToken
+            })
         } catch (error) {
             console.error(error);
             res.status(500).send({message: 'There whas a problem trying to login'});
         }
     }
-    
-
-};
 
 module.exports = UserController;
