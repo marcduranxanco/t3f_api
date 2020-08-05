@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   cards.associate = (models) => {
     //Relationship with users
     cards.hasOne(models.users, {
-      foreignKey: "fk_users",
+      foreignKey: "id",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
     });

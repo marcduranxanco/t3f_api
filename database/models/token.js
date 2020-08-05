@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   token.associate = (models) => {
     //Relationship with users
     token.hasOne(models.users, {
-      foreignKey: "fk_users",
+      foreignKey: "id",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
     });
