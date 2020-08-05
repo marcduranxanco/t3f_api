@@ -6,8 +6,7 @@ const UserController = require('../controllers/UserController'); //Import User C
 //CREATE
 router.post('/', UserController.create);
 //READ
-router.get('/', UserController.getAll);
-router.get('/:id', UserController.getOne);
+router.get('/:id?', UserController.read);
 //UPDATE
 router.put('/:id', UserController.update);
 //DELETE

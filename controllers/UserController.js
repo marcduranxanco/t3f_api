@@ -22,8 +22,19 @@ const UserController = {};
     };
 
     //READ
-    UserController.getAll = async (req, res, next) => { res.send('Get all')};
-    UserController.getOne = async (req, res, next) => { res.send('Get one')};
+    UserController.read = async (req, res) => {
+        //READ ALL
+        if (!req.params.id){
+            users.findAll().then(user => {
+                res.status(200).json(user);
+            })
+        //READ ONE
+        } else {
+            let user = await users.findByPk(req.params.id);
+            if (!user) { return res.status(400).send({message: 'This user doesn\'t exists'}) }
+            else{ return res.status(200).send(user)};
+        }
+    };
 
     //UPDATE
     UserController.update = async (req, res, next) => { res.send('update')};
