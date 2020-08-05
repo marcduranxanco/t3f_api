@@ -1,6 +1,8 @@
 const { users, token } = require('../database/models');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const env = process.env.NODE_ENV || 'development';
+const { jwt_secret } = require('../config/config.js')[env];
 
 /* USERCONTROLLER DEFINITION */
 const UserController = {};
@@ -43,8 +45,7 @@ const UserController = {};
             if (!pwMatch) { return res.status(400).send({message: 'Password error'}) }
 
             //JWT Creation
-            const jwToken = jwt.sign({ id:user.id}, 'ChangeSecret'); //SignToken, and secret (need to change)
-            
+            const jwToken = jwt.sign({ id:user.id}, jwt_secret); //SignToken, and secret (stored at .env file)
             token.create({token:jwToken, id_user:user.id});
             res.send({
                 message: 'User loged: ' + user.user_name,
