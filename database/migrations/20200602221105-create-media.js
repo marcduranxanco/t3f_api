@@ -8,23 +8,24 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      title: {
+        type: Sequelize.STRING,
+      },
+      description: {
+        type: Sequelize.STRING,
+      },
+      platforms_ids: {
+        type: Sequelize.STRING,
+      },
       id_tmdb: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
-      id_custom_media: {
+      id_img: {
         type: Sequelize.INTEGER,
         onUpdate: 'CASCADE',
         references: {
-          model: 'custom_media',
-          key: 'id'
-        }
-      },
-      id_platform: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        onUpdate: 'CASCADE',
-        references: {
-          model: 'platforms',
+          model: 'img',
           key: 'id'
         }
       },
