@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 
   // associations can be defined here
   Platforms.associate = (models) => {
-    Platforms.belongsTo(models.img, {
+    Platforms.belongsTo(models.Img, {
       foreignKey: "fk_imgId",
       onUpdate: "CASCADE",
     });
