@@ -1,15 +1,15 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const img = sequelize.define(
-    "img",
+  const Img = sequelize.define(
+    "Img",
     {
       path: DataTypes.STRING,
     },
     {}
   );
-  img.associate = (models) => {
+  Img.associate = (models) => {
     // associations can be defined here
   };
 
-  return img;
+  return Img;
 };

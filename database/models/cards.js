@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const cards = sequelize.define(
-    "cards",
+  const Cards = sequelize.define(
+    "Cards",
     {
       name: DataTypes.STRING,
       id_user: DataTypes.INTEGER,
@@ -10,14 +10,14 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   // Associations are defined here
-  cards.associate = (models) => {
-    //Relationship with users
-    cards.hasOne(models.users, {
+  Cards.associate = (models) => {
+    //Relationship with Users
+    Cards.hasOne(models.Users, {
       foreignKey: "id",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
     });
   };
 
-  return cards;
+  return Cards;
 };

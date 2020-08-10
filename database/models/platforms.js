@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const platforms = sequelize.define(
-    "platforms",
+  const Platforms = sequelize.define(
+    "Platforms",
     {
       name: DataTypes.STRING,
       url_platform: DataTypes.STRING,
@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   // associations can be defined here
-  platforms.associate = (models) => {
-    platforms.belongsTo(models.img, {
+  Platforms.associate = (models) => {
+    Platforms.belongsTo(models.img, {
       foreignKey: "fk_imgId",
       onUpdate: "CASCADE",
     });
   };
 
-  return platforms;
+  return Platforms;
 };

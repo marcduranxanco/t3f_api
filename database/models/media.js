@@ -1,29 +1,24 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const media = sequelize.define(
-    "media",
+  const Media = sequelize.define(
+    "Media",
     {
+      title: DataTypes.STRING,
+      description: DataTypes.STRING,
+      platforms_ids: DataTypes.STRING,
       id_tmdb: DataTypes.INTEGER,
-      id_custom_media: DataTypes.INTEGER,
-      id_platform: DataTypes.INTEGER,
+      id_img: DataTypes.INTEGER,
     },
     {}
   );
 
   // associations can be defined here
-  media.associate = (models) => {
-    //Relationship with platforms
-    media.hasMany(models.platforms, {
-      foreignKey: "fk_platform",
-      onUpdate: "CASCADE",
-    });
-
-    //Relationship with custom_media
-    media.hasOne(models.custom_media, {
-      foreignKey: "fk_custom_media",
+  Media.associate = (models) => {
+    platforms.belongsTo(models.img, {
+      foreignKey: "fk_imgId",
       onUpdate: "CASCADE",
     });
   };
 
-  return media;
+  return Media;
 };

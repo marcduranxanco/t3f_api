@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const cards_media = sequelize.define(
-    "cards_media",
+  const Cards_Media = sequelize.define(
+    "Cards_Media",
     {
       id_card: DataTypes.INTEGER,
       id_media: DataTypes.INTEGER,
@@ -10,21 +10,21 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   // associations can be defined here
-  cards_media.associate = (models) => {
+  Cards_Media.associate = (models) => {
     //Relationship with cards
-    cards_media.hasOne(models.cards, {
+    Cards_Media.hasOne(models.cards, {
       foreignKey: "fk_cards",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
     });
 
     //Relationship with media
-    cards_media.hasOne(models.media, {
+    Cards_Media.hasOne(models.Media, {
       foreignKey: "fk_media",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
     });
   };
 
-  return cards_media;
+  return Cards_Media;
 };

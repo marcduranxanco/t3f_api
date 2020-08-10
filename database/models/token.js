@@ -1,22 +1,23 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
-  const token = sequelize.define(
-    "token",
+  const Token = sequelize.define(
+    "Token",
     {
-      token: DataTypes.STRING,
+      Token: DataTypes.STRING,
       id_user: DataTypes.INTEGER,
+      expires: DataTypes.STRING,
     },
     {}
   );
 
-  token.associate = (models) => {
+  Token.associate = (models) => {
     //Relationship with users
-    token.hasOne(models.users, {
+    Token.hasOne(models.users, {
       foreignKey: "id",
       onUpdate: "CASCADE",
       onDelete: "CASCADE",
     });
   };
 
-  return token;
+  return Token;
 };
