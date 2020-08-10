@@ -41,7 +41,6 @@ function IsJsonString(str) {
 
 //Update
 MediaController.read = async (req, res) => {
-    console.log("test");
     //READ ALL
     if (!req.params.id) {
         Media.findAll().then((media) => {
