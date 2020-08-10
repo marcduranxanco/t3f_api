@@ -13,14 +13,14 @@ module.exports = (sequelize, DataTypes) => {
   Cards_Media.associate = (models) => {
     //Relationship with cards
     Cards_Media.hasOne(models.Cards, {
-      foreignKey: "fk_cards",
+      foreignKey: "id",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
     });
 
     //Relationship with media
     Cards_Media.hasOne(models.Media, {
-      foreignKey: "fk_media",
+      foreignKey: "id",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
     });
