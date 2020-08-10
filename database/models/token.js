@@ -3,16 +3,15 @@ module.exports = (sequelize, DataTypes) => {
   const Token = sequelize.define(
     "Token",
     {
-      Token: DataTypes.STRING,
+      token: DataTypes.STRING,
       id_user: DataTypes.INTEGER,
-      expires: DataTypes.STRING,
     },
     {}
   );
 
   Token.associate = (models) => {
     //Relationship with users
-    Token.hasOne(models.users, {
+    Token.hasOne(models.Users, {
       foreignKey: "id",
       onUpdate: "CASCADE",
       onDelete: "CASCADE",

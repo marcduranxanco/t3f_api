@@ -14,10 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 
   // associations can be defined here
   Media.associate = (models) => {
-    platforms.belongsTo(models.img, {
-      foreignKey: "fk_imgId",
-      onUpdate: "CASCADE",
-    });
+    // associations can be defined here
   };
 
   return Media;

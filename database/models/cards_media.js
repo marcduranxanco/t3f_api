@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   // associations can be defined here
   Cards_Media.associate = (models) => {
     //Relationship with cards
-    Cards_Media.hasOne(models.cards, {
+    Cards_Media.hasOne(models.Cards, {
       foreignKey: "fk_cards",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
