@@ -5,7 +5,7 @@
 
 ## Database diagram
 
-![Diagram database](./img/diagram_database.png)
+![Diagram database](https://github.com/marcduranxanco/t3f_api/blob/master/documentation/img/diagram_database.PNG?raw=true)
 
 ## Commands
 
