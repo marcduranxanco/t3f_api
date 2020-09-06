@@ -15,7 +15,8 @@ ImgController.create = async (path_img) => {
   let image = await ImgController.read(path_img).then((image) => { return image});
 
   if(!image){ // The image doesn't exist. Creating the image
-    await Img.create({ path : path_img }).then((image) => { return image });
+    let image = await Img.create({ path : path_img }).then((image) => { return image });
+    return image;
   }else{ // The image exists. List o all
     return image;
   }
