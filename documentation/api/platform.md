@@ -1,3 +1,6 @@
+# TAPE TO THE FUTURE API REST
+1. [Go to the main doc page](../../README.md)
+
 ## PLATFORM
 User creation bla bla bla
 
