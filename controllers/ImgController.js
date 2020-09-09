@@ -46,30 +46,41 @@ ImgController.read = async (path_img) => {
     }
   };
   
-  /**
-   * Delete image from database.
-   * Example: let deleted = await ImgController.delete(image).catch((error) => {return error.message});
-   * @param {*} image
-   * @return {array} data
-   */
-  ImgController.delete = async (image) => {
-    console.log("ImgController.delete: Deleting img");
-    try {
-      await image.destroy();
+/**
+ * Delete image from database.
+ * Example: let deleted = await ImgController.delete(image).catch((error) => {return error.message});
+ * @param {*} image
+ * @return {array} data
+ */
+ImgController.delete = async (image) => {
+  console.log("ImgController.delete: Deleting img");
+  try {
+    await image.destroy();
+    data = {
+      code : 200,
+      message :  "Success: Image deleted",
+      image: image
+    }
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+// //UPDATE
+ImgController.update = async (image) => {
+  console.log("ImgController.update: Updating img");
+  try {
+      await Img.update(image);
       data = {
         code : 200,
-        message :  "Success: Image deleted",
+        message :  "Success: Image updated",
         image: image
       }
       return data;
     } catch (error) {
       throw new Error(error);
     }
-  };
-
-// //UPDATE
-// ImgController.update = async (req) => {
-//   console.log("update img");
-// };
+};
 
 module.exports = ImgController;

@@ -1,4 +1,4 @@
-const { Media } = require("../database/models");
+const { Media, Img } = require("../database/models");
 const ImgController = require('./ImgController');
 
 //CRUD MEDIA
@@ -95,25 +95,29 @@ MediaController.read = async (req, res) => {
 //Read
 // Lectura de todos los datos
 MediaController.update = async (req, res) => {
-  let med = req.body;
-  await Media.findOne({
-      where: { id: req.params.id },
+  let med = await Media.findOne({ where: { id: req.params.id } })
+// console.log(med);
+  let image = await Img.findByPk(med.id_img);
+  image.update(
+    {path: req.body.path_img},
+    {where: {id : med.id_img} }
+  )
+  .catch((err) => {
+    console.log(err)
+  })
+
+  med.update(req.body)
+    .then(() => {
+      res.status(200).send({
+        message: "Media updated correctly",
+        media: med
+      });
     })
-    .then((media) => {
-      media.update(med);
-      media.save()
-        .then(() => {
-          res.status(200).send({
-            message: "Media updated correctly",
-            media: med
-          });
-        })
-        .catch((err) => {
-          res.status(400).send({
-            message: "Error updating media",
-            error: err.message,
-          });
-        });
+    .catch((err) => {
+      res.status(400).send({
+        message: "Error updating media",
+        error: err.message,
+      });
     });
 };
 
