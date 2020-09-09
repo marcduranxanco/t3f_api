@@ -56,14 +56,13 @@ UserController.update = async (req, res) => {
         res.status(200).send({
           message: "User updated correctly",
         });
+      }).catch((err) => {
+        res.status(400).send({
+          message: "Error updating user",
+          error: err.message,
+        });
       });
     })
-    .catch((err) => {
-      res.status(400).send({
-        message: "Error updating user",
-        error: err.message,
-      });
-    });
 };
 
 //DELETE
