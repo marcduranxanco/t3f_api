@@ -6,18 +6,18 @@ const CardsController = {};
 
 //CREATE: required params: id_tmdb, id_custom_media, id_platform
 CardsController.create = async (req, res) => {
-    Cards
-    .create(req.body)
-    .then((card) => res.status(201).send(card))
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send({
-        message: `There was a problem trying to register the card`,
-        error: err.message,
-      });
+  req.body.id_user = req.user.id;
+  Cards
+  .create(req.body)
+  .then((card) => res.status(201).send(card))
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send({
+      message: `There was a problem trying to register the card`,
+      error: err.message,
     });
+  });
 };
-
 
 //Update
 CardsController.read = async (req, res) => {
