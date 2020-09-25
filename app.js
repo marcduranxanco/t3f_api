@@ -6,6 +6,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const mediaRouter = require('./routes/media');
 const cardRouter = require('./routes/cards');
+const cardMediaRouter = require('./routes/cardmedia');
 
 require('dotenv').config();
 
@@ -20,5 +21,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/media', mediaRouter);
 app.use('/cards', cardRouter);
+app.use('/cardmedia', cardMediaRouter);
 
 module.exports = app;
