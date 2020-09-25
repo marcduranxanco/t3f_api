@@ -89,14 +89,14 @@ UserController.login = async (req, res) => {
   try {
     //Username / Email validation
     const user = await Users.findOne({
-      $or: [{ email: req.body.email }, { user_name: req.body.user_name }],
+      where: {email: req.body.email}
     });
     if (!user) {
       return res.status(400).send({ message: "This user doesn't exists" });
     }
 
     //Password validation
-    const pwMatch = bcrypt.compare(req.body.password, user.password);
+    const pwMatch = await bcrypt.compare(req.body.password, user.password);
     if (!pwMatch) {
       return res.status(400).send({ message: "Password error" });
     }
