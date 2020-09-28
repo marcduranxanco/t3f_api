@@ -20,33 +20,33 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo tincid
         </tr>
     </thead>
     <tbody>
-        <tr><td colspan="3"><b>Tecnologías:</b></td></tr>
-            <tr><td>:heavy_check_mark:</td><td>NodeJS\*</td><td>-</td></tr>
+        <tr><td colspan="3"><b>Tecnologías</b></td></tr>
+            <tr><td>:heavy_check_mark:</td><td>NodeJS</td><td>-</td></tr>
             <tr><td>:heavy_check_mark:</td><td>Express</td><td>-</td></tr>
             <tr><td>:heavy_check_mark:</td><td>Sequelize</td><td>-</td></tr>
             <tr><td>:heavy_check_mark:</td><td>Git + Git-flow</td><td>-</td></tr>
         <tr><td colspan="3"><b>Feature 1 : Gestión Usuario</b></td></tr>
-            <tr><td colspan="3">Requisitos Mínimos:</td></tr>
-                <tr><td>:heavy_check_mark:</td><td>Validación por Token</td><td>-</td></tr>
-                <tr><td>:heavy_check_mark:</td><td>Endpoint de Login</td><td>-</td></tr>
-                <tr><td>:heavy_check_mark:</td><td>Endpoint de Registro</td><td>-</td></tr>
-                <tr><td>:heavy_check_mark:</td><td>Endpoint de Perfil (Datos de Usuario)</td><td>-</td></tr>
-            <tr><td colspan="3">Extra points:</td></tr>
-                <tr><td>:heavy_check_mark:</td><td>Roles Administrador / Usuario / Vendedor</td><td>-</td></tr>
-                <tr><td>:heavy_check_mark:</td><td>Endpoints modificar datos de Usuario</td><td>-</td></tr>
+            <tr><td colspan="3">Requisitos Mínimos</td></tr>
+                <tr><td>:heavy_check_mark:</td><td>Validación por Token</td><td>Funcionalidad implantada con JWT.</td></tr>
+                <tr><td>:heavy_check_mark:</td><td>Endpoint de Login</td><td>Endpoint: POST - /users/login</td></tr>
+                <tr><td>:heavy_check_mark:</td><td>Endpoint de Registro</td><td>Endpoint: POST - /users/</td></tr>
+                <tr><td>:heavy_check_mark:</td><td>Endpoint de Perfil (Datos de Usuario)</td><td>Endpoint: - /users/:id?</td></tr>
+            <tr><td colspan="3">Extra points</td></tr>
+                <tr><td>:heavy_check_mark:</td><td>Roles Administrador / Usuario / Vendedor</td><td>Roles implantados: Superadmin, Usuario, Admin</td></tr>
+                <tr><td>:heavy_check_mark:</td><td>Endpoints modificar datos de Usuario</td><td>Endpoint: PUT - /users/:id?</td></tr>
         <tr><td colspan="3"><b>Feature 2 : Gestión Product</b></td></tr>
-            <tr><td colspan="3">Requisitos Mínimos:</td></tr>
-                <tr><td>:heavy_check_mark:</td><td>Endpoints añadir, eliminar, modificar producto (vendedor)</td><td>-</td></tr>
-                <tr><td>:heavy_check_mark:</td><td>Endpoint muestra all products</td><td>-</td></tr>
+            <tr><td colspan="3">Requisitos Mínimos</td></tr>
+                <tr><td>:heavy_check_mark:</td><td>Endpoints añadir, eliminar, modificar producto (vendedor)</td><td>La creación de las "media" (película, serie...) corresponde al producto. Estos productos se añadiran a una lista en forma de "Factura".</td></tr>
+                <tr><td>:heavy_check_mark:</td><td>Endpoint muestra all products</td><td>Endpoint: GET - /media/ </td></tr>
                 <tr><td>:x:</td><td>Endpoints productos filtro (más vendidos, precio, título…)</td><td>-</td></tr>
-            <tr><td colspan="3">Extra points:</td></tr>
+            <tr><td colspan="3">Extra points</td></tr>
                 <tr><td>:x:</td><td>Endpoint de productos por vendedor</td><td>-</td></tr>
                 <tr><td>:x:</td><td>Endpoint de productos por categoría</td><td>-</td></tr>
         <tr><td colspan="3"><b>Feature 3 : Gestión Compras</b></td></tr>
-            <tr><td colspan="3">Requisitos Mínimos:</td></tr>
+            <tr><td colspan="3">Requisitos Mínimos</td></tr>
                 <tr><td>:x:</td><td>Endpoint de añadir compra.</td><td>-</td></tr>
                 <tr><td>:x:</td><td>Endpoint muestra todas las compras.</td><td>-</td></tr>
-            <tr><td colspan="3">Extra points:</td></tr>
+            <tr><td colspan="3">Extra points</td></tr>
                 <tr><td>:x:</td><td>Endpoint de compras por usuario. (modo factura)</td><td>-</td></tr>
                 <tr><td>:x:</td><td>Endpoint modificación datos factura (modificación hecha por el vendedor).</td><td>-</td></tr>
     </tbody>
