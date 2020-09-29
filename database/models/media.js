@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       platforms_ids: DataTypes.STRING,
       id_tmdb: DataTypes.INTEGER,
       id_img: DataTypes.INTEGER,
+      id_user: DataTypes.INTEGER,
     },
     {}
   );
