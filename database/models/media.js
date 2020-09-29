@@ -5,8 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     {
       title: DataTypes.STRING,
       description: DataTypes.STRING,
-      year: DataTypes.STRING,
+      year: DataTypes.INTEGER,
       genere: DataTypes.STRING,
+      id_user: DataTypes.INTEGER,
       platforms_ids: DataTypes.STRING,
       id_tmdb: DataTypes.INTEGER,
       id_img: DataTypes.INTEGER,
@@ -15,9 +16,16 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
 
+
   // associations can be defined here
   Media.associate = (models) => {
     // associations can be defined here
+    //Relationship with Users
+    Media.belongsTo(models.Users, {
+      foreignKey: "id_user",
+      onUpdate: "CASCADE",
+      onDelete: "NO ACTION",
+    });
   };
 
   return Media;

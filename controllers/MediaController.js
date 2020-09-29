@@ -1,5 +1,6 @@
-const { Media, Img } = require("../database/models");
+const { Media, Img, Users } = require("../database/models");
 const ImgController = require('./ImgController');
+const { Op } = require("sequelize");
 
 //CRUD MEDIA
 /* MEDIACONTROLLER DEFINITION */
@@ -84,11 +85,34 @@ MediaController.read = async (req, res) => {
     return res.status(200).send(media);
   }
 };
+//READ ALL
 MediaController.readAll = async (req, res) => {
-  //READ ALL
   Media.findAll().then((media) => {
     res.status(200).json(media);
   });
+};
+
+MediaController.filter = async (req, res) => {
+  let top = req.query.top ? req.query.top : false ;
+  let year = req.query.year ? req.query.year : 'NULL' ;
+  let ttl = req.query.ttl ? '%'+req.query.ttl+'%' : 'NULL' ;
+  let own = req.query.own ? req.query.own : 'NULL' ;
+  let gen = req.query.gen ? '%'+req.query.gen+'%' : 'NULL' ;
+
+    Media.findAll({
+      where: {
+        [Op.or]: [
+          { year: year },
+          { id_user: own },
+          { genere: { [Op.like]: gen } },
+          { title: { [Op.like]: ttl } }
+        ]
+      },
+      attributes: ['id', 'title', 'description', 'year', 'genere', 'id_tmdb'],
+      include: [{ model: Users, attributes: ['user_name', 'email']}]
+    }).then((media) => {
+      res.status(200).json(media);
+    });
 };
 
 //Read

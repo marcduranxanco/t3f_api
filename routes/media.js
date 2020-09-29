@@ -7,8 +7,9 @@ const {authentication, isAdmin} = require('../middleware/authentication.js');
 //CREATE
 router.post('/', authentication, isAdmin, MediaController.create);
 //READ
-router.get('/:id', MediaController.read);
-router.get('/:all', MediaController.readAll);
+router.get('/read/:id', MediaController.read);
+router.get('/read/:all', MediaController.readAll);
+router.get('/filter', MediaController.filter);
 //UPDATE
 router.put('/:id', authentication, isAdmin, MediaController.update);
 //DELETE
