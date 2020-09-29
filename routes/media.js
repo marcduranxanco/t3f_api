@@ -5,13 +5,13 @@ const {authentication, isAdmin} = require('../middleware/authentication.js');
 
 /* CRUD MEDIA */
 //CREATE
-router.post('/', MediaController.create);
+router.post('/', authentication, isAdmin, MediaController.create);
 //READ
 router.get('/:id', MediaController.read);
-router.get('/:all', authentication, isAdmin, MediaController.readAll);
+router.get('/:all', MediaController.readAll);
 //UPDATE
-router.put('/:id', MediaController.update);
+router.put('/:id', authentication, isAdmin, MediaController.update);
 //DELETE
-router.delete('/:id', MediaController.delete);
+router.delete('/:id',  authentication, isAdmin, MediaController.delete);
 
 module.exports = router;
