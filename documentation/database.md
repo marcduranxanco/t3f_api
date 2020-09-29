@@ -35,3 +35,12 @@ sequelize db:migrate
 sequelize db:migrate:undo
 sequelize db:migrate:undo:all
 ```
+
+- Database seed
+
+```
+sequelize-cli db:seed:all
+sequelize-cli db:seed:undo
+sequelize-cli db:seed:undo --seed name-of-seed-as-in-data
+sequelize-cli db:seed:undo:all
+```
