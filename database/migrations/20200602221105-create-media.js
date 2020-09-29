@@ -14,6 +14,12 @@ module.exports = {
       description: {
         type: Sequelize.STRING,
       },
+      year: {
+        type: Sequelize.STRING,
+      },
+      genere: {
+        type: Sequelize.STRING,
+      },
       platforms_ids: {
         type: Sequelize.STRING,
       },
