@@ -36,7 +36,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas commodo tincid
                 <tr><td>:heavy_check_mark:</td><td>Endpoints modificar datos de Usuario</td><td>Endpoint: PUT - /users/:id?</td></tr>
         <tr><td colspan="3"><b>Feature 2 : Gestión Product</b></td></tr>
             <tr><td colspan="3">Requisitos Mínimos</td></tr>
-                <tr><td>:heavy_check_mark:</td><td>Endpoints añadir, eliminar, modificar producto (vendedor)</td><td>La creación de las "media" (película, serie...) corresponde al producto. Estos productos se añadiran a una lista en forma de "Factura".</td></tr>
+                <tr><td>:heavy_check_mark:</td><td>Endpoints añadir, eliminar, modificar producto (vendedor)</td><td>La creación de las "media" (película, serie...) corresponde al producto. Estos productos serán añadidos a una lista y formarán algo similar a una "Factura". Solo pueden ser creados, eliminados y modificados por usuarios con rol Admin o superAdmin.</td></tr>
                 <tr><td>:heavy_check_mark:</td><td>Endpoint muestra all products</td><td>Endpoint: GET - /media/ </td></tr>
                 <tr><td>:x:</td><td>Endpoints productos filtro (más vendidos, precio, título…)</td><td>-</td></tr>
             <tr><td colspan="3">Extra points</td></tr>
