@@ -9,7 +9,7 @@ User creation bla bla bla
 1. [POST /users/](#postusers)
 1. [PUT /users/](#putusers)
 1. [DELETE /users/](#deleteusers)
-1. [Post /login/](#login)
+1. [POST /login/](#login)
 
 <a id="getusers"></a>
 ## GET /users/

@@ -6,6 +6,7 @@ Media creation bla bla bla
 
 1. [GET /media/](#getmedia)
 1. [GET /media/{id}/](#getmediaid)
+1. [GET /filter/](#getfilter)
 1. [POST /media/](#postmedia)
 1. [PUT /media/](#putmedia)
 1. [DELETE /media/](#deletemedia)
@@ -39,6 +40,58 @@ Get Media details that corresponds to param id.
 **RESPONSE**
 
 Array of media
+
+**Status**: 200 Ok
+``` json
+[
+    {
+        "id": 3,
+        "user_name": "User_1",
+        "name": "User1",
+        "surname": "Surname_1",
+        "email": "test1@test.com",
+        "password": "$2a$10$QgARPcAxBgtk7LpJWQKOQ.9bOb3Lu.kpEvyexJxKRaqjUJ8jf1EGq",
+        "createdAt": "2020-09-08T17:35:39.000Z",
+        "updatedAt": "2020-09-08T17:35:39.000Z"
+    },
+    {
+        "id": 4,
+        "user_name": "User_2",
+        "name": "User2",
+        "surname": "Surname_2",
+        "email": "test2@test.com",
+        "password": "$2a$10$F9PQOB6M76JFPgfrU./1sOpLjydrcOybacGzLvhNupcU4aLcKwQii",
+        "createdAt": "2020-09-08T17:35:56.000Z",
+        "updatedAt": "2020-09-08T17:35:56.000Z"
+    },
+    {
+        "id": 5,
+        "user_name": "User_3",
+        "name": "User3",
+        "surname": "Surname_3",
+        "email": "test3@test.com",
+        "password": "$2a$10$s2XnkXk61dl5YP9Qay8g2eVBDfg6RZXpf8tlhohTUXkvqkAcSoCCu",
+        "createdAt": "2020-09-08T17:36:20.000Z",
+        "updatedAt": "2020-09-08T17:36:20.000Z"
+    }
+]
+```
+
+--------------------
+
+<a id="getfilter"></a>
+## GET /filter/
+
+Parameters
+- top
+- year
+- ttl
+- own
+- gen
+
+**RESPONSE**
+
+Array of media filtered
 
 **Status**: 200 Ok
 ``` json
