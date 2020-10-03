@@ -40,25 +40,25 @@ regex:  style=".*?"
 <tr>
 <td>:heavy_check_mark:</td>
 <td>NodeJS</td>
-<td>&nbsp;</td>
+<td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Express</td>
-<td>&nbsp;</td>
+<td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Sequelize</td>
-<td>&nbsp;</td>
+<td>-</td>
 <td>-</td>
 </tr>
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Git + Git-flow</td>
-<td>&nbsp;</td>
+<td>-</td>
 <td>-</td>
 </tr>
 <tr>
@@ -76,20 +76,20 @@ regex:  style=".*?"
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoint de Login</td>
-<td>&nbsp;POST - /users/login&nbsp;(<a href="./documentation/api/user.md#login">detalle</a>)</td>
-<td>&nbsp;</td>
+<td>POST /users/login (<a href="./documentation/api/user.md#login">detalle</a>)</td>
+<td>-</td>
 </tr>
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoint de Registro</td>
-<td>&nbsp;POST - /users/&nbsp;(<a href="./documentation/api/user.md#postusers">detalle</a>)</td>
-<td>&nbsp;</td>
+<td>POST /users/ (<a href="./documentation/api/user.md#postusers">detalle</a>)</td>
+<td>-</td>
 </tr>
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoint de Perfil (Datos de Usuario)</td>
-<td>&nbsp;GET -&nbsp;/users/:id?&nbsp;(<a href="./documentation/api/user.md#getusers">detalle</a>)</td>
-<td>&nbsp;</td>
+<td>GET /users/:id? (<a href="./documentation/api/user.md#getusers">detalle</a>)</td>
+<td>-</td>
 </tr>
 <tr>
 <td colspan="4">Extra points</td>
@@ -97,14 +97,14 @@ regex:  style=".*?"
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Roles Administrador / Usuario / Vendedor</td>
-<td>&nbsp;</td>
+<td>-</td>
 <td>Roles implantados: Superadmin, Usuario, Admin</td>
 </tr>
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoints modificar datos de Usuario</td>
-<td>&nbsp;PUT - /users/:id? (<a href="./documentation/api/user.md#putusers">detalle</a>)</td>
-<td>&nbsp;</td>
+<td>PUT /users/:id? (<a href="./documentation/api/user.md#putusers">detalle</a>)</td>
+<td>-</td>
 </tr>
 <tr>
 <td colspan="4"><strong>Feature 2 : Gesti&oacute;n Product</strong></td>
@@ -115,7 +115,7 @@ regex:  style=".*?"
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoints a&ntilde;adir, eliminar, modificar producto (vendedor)</td>
-<td>&nbsp;POST | DELETE&nbsp;| PUT&nbsp; - /media/ (<a href="./documentation/api/media.md">detalle</a>)</td>
+<td>POST | DELETE&nbsp;| PUT&nbsp; /media/ (<a href="./documentation/api/media.md">detalle</a>)</td>
 <td>
 <p>La creaci&oacute;n de las "media" (pel&iacute;cula, serie...) corresponde al producto.</p>
 <p>Estos productos ser&aacute;n a&ntilde;adidos a una card y formar&aacute;n algo similar a una "Factura".</p>
@@ -125,13 +125,13 @@ regex:  style=".*?"
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoint muestra all products</td>
-<td>GET - /media/ (<a href="./documentation/api/media.md#getmedia">detalle</a>)</td>
+<td>GET /media/ (<a href="./documentation/api/media.md#getmedia">detalle</a>)</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoints productos filtro (m&aacute;s vendidos, precio, t&iacute;tulo&hellip;)</td>
-<td>GET - /media/filter (<a href="./documentation/api/media.md">detalle</a>)</td>
+<td>GET /media/filter (<a href="./documentation/api/media.md">detalle</a>)</td>
 <td>
 <p>Par&aacute;metros: top, year, ttl, own, gen</p>
 </td>
@@ -142,13 +142,13 @@ regex:  style=".*?"
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoint de productos por vendedor</td>
-<td>GET -&nbsp;/media/filter (<a href="./documentation/api/media.md">detalle</a>)</td>
+<td>GET /media/filter (<a href="./documentation/api/media.md">detalle</a>)</td>
 <td>Implantado en el endpoint de filtro de productos (par&aacute;metro own)</td>
 </tr>
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoint de productos por categor&iacute;a</td>
-<td>GET -&nbsp;/media/filter (<a href="./documentation/api/media.md">detalle</a>)</td>
+<td>GET /media/filter (<a href="./documentation/api/media.md">detalle</a>)</td>
 <td>
 <p>Equivalencia gen.</p>
 <p>Implantado en el endpoint de filtro de productos (par&aacute;metro gen)</p>
@@ -164,33 +164,9 @@ regex:  style=".*?"
 <td>:heavy_check_mark:</td>
 <td>Endpoint de a&ntilde;adir compra.</td>
 <td>
-<p>&nbsp;POST /cardmedia/ (<a href="./documentation/api/media.md">detalle</a>)</p>
+<p>POST /cardmedia/ (<a href="./documentation/api/media.md">detalle</a>)</p>
 </td>
-<td>
-<p>Se corresponde a a&ntilde;adir una un insert a la tabla intermedia&nbsp;card_media.</p>
-<p>Es necesario que haya creada primero una card.</p>
-</td>
-</tr>
-<tr>
-<td>:x:</td>
-<td>Endpoint muestra todas las compras.</td>
 <td>&nbsp;</td>
-<td>-</td>
-</tr>
-<tr>
-<td colspan="4">Extra points</td>
-</tr>
-<tr>
-<td>:x:</td>
-<td>Endpoint de compras por usuario. (modo factura)</td>
-<td>&nbsp;</td>
-<td>-</td>
-</tr>
-<tr>
-<td>:x:</td>
-<td>Endpoint modificaci&oacute;n datos factura (modificaci&oacute;n hecha por el vendedor).</td>
-<td>&nbsp;</td>
-<td>-</td>
 </tr>
 </tbody>
 </table>

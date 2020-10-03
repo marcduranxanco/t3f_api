@@ -1,11 +1,10 @@
 # TAPE TO THE FUTURE API REST
 [Go to the main doc page](../../README.md)
 
-# USER
-User creation bla bla bla
+# USER ENDPOINTS:
 
 1. [GET /users/](#getusers)
-1. [GET /users/{id}/](#getusersid)
+1. [GET /users/:id?/](#getusersid)
 1. [POST /users/](#postusers)
 1. [PUT /users/](#putusers)
 1. [DELETE /users/](#deleteusers)
@@ -13,10 +12,10 @@ User creation bla bla bla
 
 <a id="getusers"></a>
 ## GET /users/
-Get list of all users
+Get list of all users.
+Only available for Admin and superAdmin roles.
 
 **RESPONSE**
-
 **Status**: 200 Ok 
 ``` json
 {
@@ -26,6 +25,7 @@ Get list of all users
     "surname": "Surname_1",
     "email": "test1@test.com",
     "password": "$2a$10$kkyPImyMltLNUnoAZBiGNOuaBSyfWexzF6l8oR0M.DeGR/ZAIgbk.",
+    "role": "superAdmin",
     "updatedAt": "2020-09-07T16:39:06.451Z",
     "createdAt": "2020-09-07T16:39:06.451Z"
 }
@@ -34,11 +34,11 @@ Get list of all users
 --------------------
 
 <a id="getusersid"></a>
-## GET /users/{id}/
+## GET /users/:id/
 Get user details that corresponds to param id.
+Only available for Admin and superAdmin roles.
 
 **RESPONSE**
-
 Array of users
 
 **Status**: 200 Ok
@@ -51,6 +51,7 @@ Array of users
         "surname": "Surname_1",
         "email": "test1@test.com",
         "password": "$2a$10$QgARPcAxBgtk7LpJWQKOQ.9bOb3Lu.kpEvyexJxKRaqjUJ8jf1EGq",
+        "role": "superAdmin",
         "createdAt": "2020-09-08T17:35:39.000Z",
         "updatedAt": "2020-09-08T17:35:39.000Z"
     },
@@ -61,6 +62,7 @@ Array of users
         "surname": "Surname_2",
         "email": "test2@test.com",
         "password": "$2a$10$F9PQOB6M76JFPgfrU./1sOpLjydrcOybacGzLvhNupcU4aLcKwQii",
+        "role": "admin",
         "createdAt": "2020-09-08T17:35:56.000Z",
         "updatedAt": "2020-09-08T17:35:56.000Z"
     },
@@ -70,6 +72,7 @@ Array of users
         "name": "User3",
         "surname": "Surname_3",
         "email": "test3@test.com",
+        "role": "user",
         "password": "$2a$10$s2XnkXk61dl5YP9Qay8g2eVBDfg6RZXpf8tlhohTUXkvqkAcSoCCu",
         "createdAt": "2020-09-08T17:36:20.000Z",
         "updatedAt": "2020-09-08T17:36:20.000Z"
@@ -81,9 +84,9 @@ Array of users
 
 <a id="postusers"></a>
 ## POST /users/
-Create a new user
+Create a new user with default role (user)
 
-Params:
+**PARAMETERS**
 * user_name 
 * name 
 * surname 
@@ -91,7 +94,6 @@ Params:
 * password 
 
 **QUERY**
-
 Json in body:
 ``` json
 {
@@ -104,7 +106,6 @@ Json in body:
 ```
 
 **RESPONSE**
-
 **Status**: 201 Created 
 ``` json
 {
@@ -123,17 +124,19 @@ Json in body:
 
 <a id="putusers"></a>
 ## PUT /users/{id}/
-Update user:
+Update user.
+Only available for Admin and superAdmin roles.
 
-Params: All parameters are optional.
+**PARAMETERS**
+All parameters are optional.
 * user_name 
 * name 
 * surname 
-* email 
+* email
+* role
 * password 
 
 **QUERY**
-
 Json in body:
 ``` json
 {
@@ -146,7 +149,6 @@ Json in body:
 ```
 
 **RESPONSE**
-
 **Status**: 200 Ok 
 ``` json
 {
@@ -160,7 +162,7 @@ Json in body:
 ## DELETE /users/{id}
 Delete user with id sent in paramater.
 
-Params:
+**PARAMETERS**
 * id: user id
 
 **RESPONSE**
@@ -175,15 +177,13 @@ Params:
 --------------------
 
 <a id="login"></a>
-## POST /login/
-User Login. Create token in database.
+## POST /users/login/
 
-Params
+**PARAMETERS**
 * email | username : user name or user email
 * password
 
 **QUERY**
-
 Json in body:
 ``` json
 {
@@ -205,6 +205,7 @@ Json in body:
         "surname": "Surname_1",
         "email": "test1@test.com",
         "password": "$2a$10$meUs0XCDHGIstM7K25qOx.rgXD2JwIscp6n/Hl5LgtGAt.kQ6P3LW",
+        "role": "user",
         "createdAt": "2020-09-07T16:50:03.000Z",
         "updatedAt": "2020-09-07T16:50:03.000Z"
     },
