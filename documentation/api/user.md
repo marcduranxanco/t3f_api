@@ -10,6 +10,8 @@
 1. [DELETE /users/](#deleteusers)
 1. [POST /login/](#login)
 
+--------------------
+
 <a id="getusers"></a>
 ## GET /users/
 Get list of all users.

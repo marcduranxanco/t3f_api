@@ -2,7 +2,7 @@
 1. [Go to the main doc page](../../README.md)
 
 ## PLATFORM
-User creation bla bla bla
+PENDINT TO IMPLEMENT
 
 * `GET /platforms/`
 > Get list of platforms

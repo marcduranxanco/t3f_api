@@ -117,15 +117,15 @@ regex:  style=".*?"
 <td>Endpoints a&ntilde;adir, eliminar, modificar producto (vendedor)</td>
 <td>POST | DELETE&nbsp;| PUT&nbsp; /media/ (<a href="./documentation/api/media.md">detalle</a>)</td>
 <td>
-<p>La creaci&oacute;n de las "media" (pel&iacute;cula, serie...) corresponde al producto.</p>
-<p>Estos productos ser&aacute;n a&ntilde;adidos a una card y formar&aacute;n algo similar a una "Factura".</p>
+<p>La creaci&oacute;n de las "media" (pel&iacute;cula, serie...) corresponde a la creación del producto.</p>
+<p>Estos productos ser&aacute;n a&ntilde;adidos a una "card" y formar&aacute;n algo similar a una factura.</p>
 <p>Solo pueden ser creados, eliminados y modificados por usuarios con rol Admin o superAdmin.</p>
 </td>
 </tr>
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoint muestra all products</td>
-<td>GET /media/ (<a href="./documentation/api/media.md#getmedia">detalle</a>)</td>
+<td>GET /media/read (<a href="./documentation/api/media.md#getmedia">detalle</a>)</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
@@ -154,7 +154,6 @@ regex:  style=".*?"
 <p>Implantado en el endpoint de filtro de productos (par&aacute;metro gen)</p>
 </td>
 </tr>
-<tr>
 <td colspan="4"><strong>Feature 3 : Gesti&oacute;n Compras</strong></td>
 </tr>
 <tr>
@@ -164,12 +163,36 @@ regex:  style=".*?"
 <td>:heavy_check_mark:</td>
 <td>Endpoint de a&ntilde;adir compra.</td>
 <td>
-<p>POST /cardmedia/ (<a href="./documentation/api/media.md">detalle</a>)</p>
+<p>&nbsp;POST /cardmedia/ (<a href="./documentation/api/cardMedia.md#postCardMedia">detalle</a>)</p>
 </td>
+<td>
+<p>Se corresponde a a&ntilde;adir una un insert a la tabla intermedia&nbsp;card_media.</p>
+<p>Es necesario que haya creada primero una "card" y el producto correspondiente.</p>
+</td>
+</tr>
+<tr>
+<td>:heavy_check_mark:</td>
+<td>Endpoint muestra todas las compras.</td>
+<td>GET /cardmedia/  (<a href="./documentation/api/cardMedia.md#getCardMedia">detalle</a>)</td>
+<td>Muestra el listado de todas las lineas creadas en la tabla intermedia card_media</td>
+</tr>
+<tr>
+<td colspan="4">Extra points</td>
+</tr>
+<tr>
+<td>:x:</td>
+<td>Endpoint de compras por usuario. (modo factura)</td>
 <td>&nbsp;</td>
+<td>-</td>
+</tr>
+<tr>
+<td>:x:</td>
+<td>Endpoint modificaci&oacute;n datos factura (modificaci&oacute;n hecha por el vendedor).</td>
+<td>&nbsp;</td>
+<td>-</td>
 </tr>
 </tbody>
-</table>
+    </table>
 
 # DOCUMENTACIÓN GENERAL
 
@@ -182,3 +205,4 @@ regex:  style=".*?"
 - [Media](./documentation/api/media.md)
 - [Platform](./documentation/api/platform.md)
 - [Cards](./documentation/api/cards.md)
+- [CardMedia](./documentation/api/cards.md)
