@@ -6,7 +6,8 @@ const CardMediaController = require('../controllers/CardMediaController'); //Imp
 //CREATE
 router.post('/', CardMediaController.create);
 //READ
-router.get('/:id?', CardMediaController.read);
+router.get('/read/:id?', CardMediaController.read);
+router.get('/filter', CardMediaController.read);
 //UPDATE
 router.put('/:id', CardMediaController.update);
 //DELETE
