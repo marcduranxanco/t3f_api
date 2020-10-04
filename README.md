@@ -182,13 +182,13 @@ regex:  style=".*?"
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoint de compras por usuario. (modo factura)</td>
-<td>GET /cardmedia/detail (<a href="./documentation/api/cardMedia.md#getcarddetail">detalle</a>)</td>
+<td>GET /card/detail (<a href="./documentation/api/card.md#getcarddetail">detalle</a>)</td>
 <td>Muestra todas las "cards" creadas por un usuario</td>
 </tr>
 <tr>
-<td>:x:</td>
+<td>:heavy_check_mark:</td>
 <td>Endpoint modificaci&oacute;n datos factura (modificaci&oacute;n hecha por el vendedor).</td>
-<td>&nbsp;</td>
+<td>PUT /cardmedia/:id? (<a href="./documentation/api/cardMedia.md#putCardMedia">detalle</a>)</td>
 <td>-</td>
 </tr>
 </tbody>
