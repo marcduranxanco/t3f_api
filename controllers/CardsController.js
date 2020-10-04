@@ -45,29 +45,14 @@ CardsController.detail = async (req, res) => {
   }
 
   Cards.findAll({
-    where: {
-      id_user: own
-    },
-    attributes: [
-      "id",
-      "name",
-      "createdAt"],
+    where: { id_user: own },
+    attributes: [ "id", "name", "createdAt"],
     include: [
       { model: Users,
-        attributes: [
-          "id",
-          "user_name"
-        ],
+        attributes: [ "id", "user_name" ],
       },
       { model: Media, 
-        attributes: [
-          "id",
-          "title",
-          "description",
-          "year",
-          "genere",
-          "id_tmdb"
-        ],
+        attributes: [ "id", "title", "description", "year", "genere", "id_tmdb" ],
         through: {
           model: Cards_Media,
           attributes: [],
@@ -76,7 +61,7 @@ CardsController.detail = async (req, res) => {
     ],
   }).then((cm) => {
     res.status(200).json(cm);
-  }); 
+  });
 };
 
 //UPDATE
@@ -93,7 +78,8 @@ CardsController.update = async (req, res) => {
           res.status(200).send({
             message: "card updated correctly",
           });
-        }).catch((err) => {
+        })
+      .catch((err) => {
           res.status(400).send({
             message: "Error updating card",
             error: err.message,
