@@ -173,17 +173,17 @@ regex:  style=".*?"
 <tr>
 <td>:heavy_check_mark:</td>
 <td>Endpoint muestra todas las compras.</td>
-<td>GET /cardmedia/  (<a href="./documentation/api/cardMedia.md#getCardMedia">detalle</a>)</td>
+<td>GET /cardmedia/read (<a href="./documentation/api/cardMedia.md#getCardMedia">detalle</a>)</td>
 <td>Muestra el listado de todas las lineas creadas en la tabla intermedia card_media</td>
 </tr>
 <tr>
 <td colspan="4">Extra points</td>
 </tr>
 <tr>
-<td>:x:</td>
+<td>:heavy_check_mark:</td>
 <td>Endpoint de compras por usuario. (modo factura)</td>
-<td>&nbsp;</td>
-<td>-</td>
+<td>GET /cardmedia/detail (<a href="./documentation/api/cardMedia.md#getcarddetail">detalle</a>)</td>
+<td>Muestra todas las "cards" creadas por un usuario</td>
 </tr>
 <tr>
 <td>:x:</td>

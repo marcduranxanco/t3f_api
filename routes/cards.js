@@ -7,7 +7,8 @@ const {authentication} = require('../middleware/authentication.js');
 //CREATE
 router.post('/', authentication, CardsController.create);
 //READ
-router.get('/:id?', CardsController.read);
+router.get('/read/:id?', CardsController.read);
+router.get('/detail', CardsController.detail);
 //UPDATE
 router.put('/:id', CardsController.update);
 //DELETE
