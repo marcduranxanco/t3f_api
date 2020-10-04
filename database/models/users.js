@@ -13,12 +13,6 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Users.associate = (models) => {
-    // associations can be defined here
-    Users.belongsTo(models.Media, {
-      foreignKey: "id",
-      onUpdate: "CASCADE",
-      onDelete: "NO ACTION",
-    });
   };
 
   return Users;

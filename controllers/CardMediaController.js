@@ -1,4 +1,4 @@
-const { Cards_Media } = require("../database/models");
+const { Cards_Media, Cards, Media, Users } = require("../database/models");
 
 //CRUD MEDIA
 /* CARDSCONTROLLER DEFINITION */
@@ -18,7 +18,8 @@ CardMediaController.create = async (req, res) => {
     });
 };
 
-//Update
+//Read
+// Lectura de todos los datos
 CardMediaController.read = async (req, res) => {
     //READ ALL
     if (!req.params.id) {
@@ -36,8 +37,18 @@ CardMediaController.read = async (req, res) => {
     }
 };
 
-//Read
-// Lectura de todos los datos
+CardMediaController.filter = async (req, res) => {
+  Cards_Media.findAll({
+    include: [
+      { model: Media },
+      { model: Cards, include: [{ model: Users }] }
+    ]
+  }).then((cm) => {
+    res.status(200).json(cm);
+  });
+};
+
+//Update
 CardMediaController.update = async (req, res) => {
     let cM = req.body;
     await Cards_Media

@@ -75,21 +75,22 @@ function IsJsonString(str) {
 
 //Update
 MediaController.read = async (req, res) => {
+  //READ ALL
+  if(!req.params.id){
+    Media.findAll().then((media) => {
+      res.status(200).json(media);
+    });
   //READ ONE
-  let media = await Media.findByPk(req.params.id);
-  if (!media) {
-    return res
-      .status(400)
-      .send({ message: "This media you have requested doesn't exists" });
-  } else {
-    return res.status(200).send(media);
+  }else{
+    let media = await Media.findByPk(req.params.id);
+    if (!media) {
+      return res
+        .status(400)
+        .send({ message: "This media you have requested doesn't exists" });
+    } else {
+      return res.status(200).send(media);
+    }
   }
-};
-//READ ALL
-MediaController.readAll = async (req, res) => {
-  Media.findAll().then((media) => {
-    res.status(200).json(media);
-  });
 };
 
 MediaController.filter = async (req, res) => {

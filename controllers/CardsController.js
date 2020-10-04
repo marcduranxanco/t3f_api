@@ -1,4 +1,4 @@
-const { Cards } = require("../database/models");
+const { Cards, Users, Cards_Media, Media } = require("../database/models");
 
 //CRUD MEDIA
 /* CARDSCONTROLLER DEFINITION */
@@ -19,7 +19,7 @@ CardsController.create = async (req, res) => {
   });
 };
 
-//Update
+//READ
 CardsController.read = async (req, res) => {
   //READ ALL
   if (!req.params.id) {
@@ -37,7 +37,49 @@ CardsController.read = async (req, res) => {
   }
 };
 
-//Read
+//DETAIL
+CardsController.detail = async (req, res) => {
+  let own = req.query.own ? req.query.own : false ;
+  if (!own) {
+    return res.status(400).send({ message: "You must send the owner of the card" });
+  }
+
+  Cards.findAll({
+    where: {
+      id_user: own
+    },
+    attributes: [
+      "id",
+      "name",
+      "createdAt"],
+    include: [
+      { model: Users,
+        attributes: [
+          "id",
+          "user_name"
+        ],
+      },
+      { model: Media, 
+        attributes: [
+          "id",
+          "title",
+          "description",
+          "year",
+          "genere",
+          "id_tmdb"
+        ],
+        through: {
+          model: Cards_Media,
+          attributes: [],
+        }
+      }
+    ],
+  }).then((cm) => {
+    res.status(200).json(cm);
+  }); 
+};
+
+//UPDATE
 // Lectura de todos los datos
 CardsController.update = async (req, res) => {
     let c = req.body;
