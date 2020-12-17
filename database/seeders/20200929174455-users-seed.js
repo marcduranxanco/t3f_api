@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 const bcrypt = require("bcryptjs");
 
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    let pwd = bcrypt.hashSync('1234', 10);
+    let pwd = bcrypt.hashSync(process.env.DEFAULT_USERS_SECRET, 10);
 
     return queryInterface.bulkInsert('Users', [
       {
