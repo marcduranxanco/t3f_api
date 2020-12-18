@@ -2,34 +2,25 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
 
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
     return queryInterface.bulkInsert('Media', [{
-      "title": "Lovers & Leavers (Kuutamolla)",
-      "description": "Nondisplaced segmental fracture of shaft of unsp fibula",
-      "year": 1999,
-      "genere": "Drama|Romance",
-      "id_tmdb": 74,
-      "id_img": 4,
-      "id_user": 2,
+      "title": "Tenet",
+      "description": "Armado solamente con una palabra, Tenet, el protagonista deberá luchar por la supervivencia del mundo entero y evitar la Tercera Guerra Mundial, en una historia de espionaje internacional. La misión se desplegará más allá del tiempo real. No son viajes en el tiempo, es inversión.",
+      "year": 2020,
+      "genere": "Acción|Suspense|Ciencia ficción",
+      "id_tmdb": 577922,
+      "id_img": null,
+      "id_user": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     }, {
-      "title": "To Be Twenty",
+      "title": "Juego de tronos",
       "description": "Nondisp fx of ant column of r acetab, subs for fx w nonunion",
-      "year": 2010,
+      "year": 2011,
       "genere": "Comedy|Drama|Horror",
-      "id_tmdb": 51,
-      "id_img": 6,
-      "id_user": 2,
+      "id_tmdb": 1399,
+      "id_img": null,
+      "id_user": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     }, {
@@ -39,7 +30,7 @@ module.exports = {
       "genere": "Action|Crime|Drama",
       "id_tmdb": 6,
       "id_img": 4,
-      "id_user": 3,
+      "id_user": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     }, {
@@ -59,7 +50,7 @@ module.exports = {
       "genere": "Documentary",
       "id_tmdb": 65,
       "id_img": 3,
-      "id_user": 2,
+      "id_user": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     }, {
@@ -69,7 +60,7 @@ module.exports = {
       "genere": "Comedy",
       "id_tmdb": 21,
       "id_img": 5,
-      "id_user": 2,
+      "id_user": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     }, {
@@ -89,7 +80,7 @@ module.exports = {
       "genere": "Drama",
       "id_tmdb": 30,
       "id_img": 4,
-      "id_user": 3,
+      "id_user": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     }, {
@@ -99,7 +90,7 @@ module.exports = {
       "genere": "Comedy",
       "id_tmdb": 52,
       "id_img": 2,
-      "id_user": 3,
+      "id_user": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     }, {
@@ -109,19 +100,12 @@ module.exports = {
       "genere": "Drama",
       "id_tmdb": 14,
       "id_img": 5,
-      "id_user": 3,
+      "id_user": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     }]);
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
   }
 };
