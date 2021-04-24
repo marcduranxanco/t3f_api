@@ -18,7 +18,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'NO ACTION',
         references: {
-          model: 'Users',
+          model: 'users',
           key: 'id'
         }
       },
