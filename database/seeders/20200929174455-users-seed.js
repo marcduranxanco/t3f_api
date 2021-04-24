@@ -6,7 +6,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     let pwd = bcrypt.hashSync(process.env.DEFAULT_USERS_SECRET, 10);
 
-    return queryInterface.bulkInsert('Users', [
+    return queryInterface.bulkInsert('users', [
       {
       user_name: 'Superadmin',
       name: 'Superadmin',
@@ -31,6 +31,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Users', null, {});
+    return queryInterface.bulkDelete('users', null, {});
   }
 };

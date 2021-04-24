@@ -12,7 +12,7 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-   return queryInterface.bulkInsert('Img', [
+   return queryInterface.bulkInsert('img', [
       {
         path: '/path/01',
         createdAt: new Date(),
