@@ -1,7 +1,7 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
   const Img = sequelize.define(
-    "Img",
+    "img",
     {
       path: DataTypes.STRING
     },

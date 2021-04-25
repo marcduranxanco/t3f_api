@@ -2,8 +2,8 @@
 const { Cards_Media } = require("./cards_media");
 
 module.exports = (sequelize, DataTypes) => {
-  const Cards = sequelize.define(
-    "Cards",
+  const cards = sequelize.define(
+    "cards",
     {
       name: DataTypes.STRING,
       id_user: DataTypes.INTEGER,
@@ -12,16 +12,16 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   // Associations are defined here
-  Cards.associate = (models) => {
+  cards.associate = (models) => {
 
-    Cards.belongsTo(models.Users, {
+    cards.belongsTo(models.Users, {
       foreignKey: "id_user",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
     });
 
-    Cards.belongsToMany(models.Media, {
-      through: "Cards_Media",
+    cards.belongsToMany(models.Media, {
+      through: "cards_media",
       foreignKey: "id_card",
       otherKey: "id_media",
       onUpdate: "CASCADE",
@@ -30,5 +30,5 @@ module.exports = (sequelize, DataTypes) => {
 
   };
 
-  return Cards;
+  return cards;
 };

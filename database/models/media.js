@@ -1,9 +1,9 @@
 "use strict";
-const { Cards_Media } = require("./cards_media");
+const { cards_media } = require("./cards_media");
 
 module.exports = (sequelize, DataTypes) => {
-  const Media = sequelize.define(
-    "Media",
+  const media = sequelize.define(
+    "media",
     {
       title: DataTypes.STRING,
       description: DataTypes.STRING,
@@ -20,16 +20,16 @@ module.exports = (sequelize, DataTypes) => {
 
 
   // associations can be defined here
-  Media.associate = (models) => {
+  media.associate = (models) => {
 
-    Media.belongsTo(models.Users, {
+    media.belongsTo(models.users, {
       foreignKey: "id_user",
       onUpdate: "CASCADE",
       onDelete: "NO ACTION",
     });
 
-    Media.belongsToMany(models.Cards, {
-      through: "Cards_Media",
+    media.belongsToMany(models.cards, {
+      through: "cards_media",
       foreignKey: "id_media",
       otherKey: "id_card",
       onUpdate: "CASCADE",
@@ -38,5 +38,5 @@ module.exports = (sequelize, DataTypes) => {
 
   };
 
-  return Media;
+  return media;
 };

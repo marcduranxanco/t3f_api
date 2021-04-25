@@ -2,20 +2,20 @@
 
 module.exports = (sequelize, DataTypes) => {
 
-  const Cards_Media = sequelize.define(
-    "Cards_Media",
+  const cards_media = sequelize.define(
+    "cards_media",
     {
       id_card: {
         type: DataTypes.INTEGER,
         references: {
-          model: "Cards",
+          model: "cards",
           key: 'id'
         }
       },
       id_media:{
         type: DataTypes.INTEGER,
         references: {
-          model: "Media", 
+          model: "media", 
           key: 'id'
         }
       },
@@ -24,19 +24,19 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   // associations can be defined here
-  Cards_Media.associate = (models) => {
+  cards_media.associate = (models) => {
 
     // models.Cards.belongsToMany(models.Media, { through: Cards_Media, foreignKey: 'id_card' });
     // models.Media.belongsToMany(models.Cards, { through: Cards_Media, foreignKey: 'id_media' });
 
     //Relationship with cards
-    Cards_Media.hasMany(models.Cards, {
+    cards_media.hasMany(models.Cards, {
       foreignKey: "id",
       // onUpdate: "CASCADE",
       // onDelete: "NO ACTION",
     });
 
-    Cards_Media.hasMany(models.Media, {
+    cards_media.hasMany(models.Media, {
       foreignKey: "id",
       // onUpdate: "CASCADE",
       // onDelete: "NO ACTION",
@@ -44,5 +44,5 @@ module.exports = (sequelize, DataTypes) => {
 
   };
 
-  return Cards_Media;
+  return cards_media;
 };
