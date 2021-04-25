@@ -1,13 +1,13 @@
-const { Cards, Users, Cards_Media, Media } = require("../database/models");
+const { cards, users, cards_media, media } = require("../database/models");
 
-//CRUD MEDIA
+//CRUD media
 /* CARDSCONTROLLER DEFINITION */
 const CardsController = {};
 
 //CREATE: required params: id_tmdb, id_custom_media, id_platform
 CardsController.create = async (req, res) => {
   req.body.id_user = req.user.id;
-  Cards
+  cards
   .create(req.body)
   .then((card) => res.status(201).send(card))
   .catch((err) => {
@@ -23,7 +23,7 @@ CardsController.create = async (req, res) => {
 CardsController.read = async (req, res) => {
   //READ ALL
   if (!req.params.id) {
-    Cards.findAll().then((card) => {
+    cards.findAll().then((card) => {
       res.status(200).json(card);
     });
     //READ ONE
@@ -44,17 +44,17 @@ CardsController.detail = async (req, res) => {
     return res.status(400).send({ message: "You must send the owner of the card" });
   }
 
-  Cards.findAll({
+  cards.findAll({
     where: { id_user: own },
     attributes: [ "id", "name", "createdAt"],
     include: [
-      { model: Users,
+      { model: users,
         attributes: [ "id", "user_name" ],
       },
-      { model: Media, 
+      { model: media, 
         attributes: [ "id", "title", "description", "year", "genere", "id_tmdb" ],
         through: {
-          model: Cards_Media,
+          model: cards_media,
           attributes: [],
         }
       }
@@ -68,7 +68,7 @@ CardsController.detail = async (req, res) => {
 // Lectura de todos los datos
 CardsController.update = async (req, res) => {
     let c = req.body;
-    await Cards
+    await cards
       .findOne({
         where: { id: req.params.id },
       })

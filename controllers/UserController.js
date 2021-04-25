@@ -1,4 +1,4 @@
-const { Users, Token } = require("../database/models");
+const { users, token } = require("../database/models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const env = process.env.NODE_ENV || "development";
@@ -12,7 +12,7 @@ const UserController = {};
 //CREATE
 UserController.create = async (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, 10); //Encrypt the user password
-  Users
+  users
     .create(req.body)
     .then((user) => res.status(201).send(user))
     .catch((err) => {
@@ -28,12 +28,12 @@ UserController.create = async (req, res) => {
 UserController.read = async (req, res) => {
   //READ ALL
   if (!req.params.id) {
-    Users.findAll().then((user) => {
+    users.findAll().then((user) => {
       res.status(200).json(user);
     });
     //READ ONE
   } else {
-    let user = await Users.findByPk(req.params.id);
+    let user = await users.findByPk(req.params.id);
     if (!user) {
       return res.status(400).send({ message: "This user doesn't exists" });
     } else {
@@ -45,7 +45,7 @@ UserController.read = async (req, res) => {
 //UPDATE
 UserController.update = async (req, res) => {
   let u = req.body;
-  await Users
+  await users
     .findOne({
       where: { id: req.params.id },
     })
@@ -67,7 +67,7 @@ UserController.update = async (req, res) => {
 
 //DELETE
 UserController.delete = async (req, res) => {
-  await Users
+  await users
     .findByPk(req.params.id)
     .then((user) => {
       user.destroy();
@@ -88,7 +88,7 @@ UserController.delete = async (req, res) => {
 UserController.login = async (req, res) => {
   try {
     //Username / Email validation
-    const user = await Users.findOne({
+    const user = await users.findOne({
       where: {email: req.body.email}
     });
     if (!user) {
@@ -103,7 +103,7 @@ UserController.login = async (req, res) => {
 
     //JWT Creation
     const jwToken = jwt.sign({ id: user.id }, jwt_secret, { expiresIn: '2d' } ); //SignToken, and secret (stored at .env file)
-    Token.create({ token: jwToken, id_user: user.id });
+    token.create({ token: jwToken, id_user: user.id });
     res.send({
       message: "User loged: " + user.user_name,
       user,

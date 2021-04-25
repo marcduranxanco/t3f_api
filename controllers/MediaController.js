@@ -1,8 +1,8 @@
-const { Media, Img, Users } = require("../database/models");
+const { media, img, users } = require("../database/models");
 const ImgController = require('./ImgController');
 const { Op } = require("sequelize");
 
-//CRUD MEDIA
+//CRUD media
 /* MEDIACONTROLLER DEFINITION */
 const MediaController = {};
 
@@ -41,7 +41,7 @@ MediaController.create = async (req, res) => {
     // if(IsJsonString(req.body.platforms)){
     //     let platforms = JSON.parse(req.body.platforms); //Futur
 
-  //INSERT THE MEDIA ELEMENT
+  //INSERT THE media ELEMENT
   // }else{
   //     res.status(500).send({
   //         message: `There was a problem creating a new media`,
@@ -49,7 +49,7 @@ MediaController.create = async (req, res) => {
   //     });
   // }
 
-  Media.create(req.body)
+  media.create(req.body)
     .then((media) => res.status(201).send(media))
     .catch((err) => {
       console.error(err);
@@ -77,12 +77,12 @@ function IsJsonString(str) {
 MediaController.read = async (req, res) => {
   //READ ALL
   if(!req.params.id){
-    Media.findAll().then((media) => {
+    media.findAll().then((media) => {
       res.status(200).json(media);
     });
   //READ ONE
   }else{
-    let media = await Media.findByPk(req.params.id);
+    let media = await media.findByPk(req.params.id);
     if (!media) {
       return res
         .status(400)
@@ -100,7 +100,7 @@ MediaController.filter = async (req, res) => {
   let own = req.query.own ? req.query.own : 'NULL' ;
   let gen = req.query.gen ? '%'+req.query.gen+'%' : 'NULL' ;
 
-    Media.findAll({
+    media.findAll({
       where: {
         [Op.or]: [
           { year: year },
@@ -110,7 +110,7 @@ MediaController.filter = async (req, res) => {
         ]
       },
       attributes: ['id', 'title', 'description', 'year', 'genere', 'id_tmdb'],
-      include: [{ model: Users, attributes: ['user_name', 'email']}]
+      include: [{ model: users, attributes: ['user_name', 'email']}]
     }).then((media) => {
       res.status(200).json(media);
     });
@@ -119,9 +119,9 @@ MediaController.filter = async (req, res) => {
 //Read
 // Lectura de todos los datos
 MediaController.update = async (req, res) => {
-  let med = await Media.findOne({ where: { id: req.params.id } })
+  let med = await media.findOne({ where: { id: req.params.id } })
 // console.log(med);
-  let image = await Img.findByPk(med.id_img);
+  let image = await img.findByPk(med.id_img);
   image.update(
     {path: req.body.path_img},
     {where: {id : med.id_img} }
@@ -151,7 +151,7 @@ MediaController.delete = async (req, res) => {
     // //Remove image
     // let deleted = await ImgController.delete(image).catch((error) => {return error.message});
     // console.log(deleted);
-  await Media.findByPk(req.params.id)
+  await media.findByPk(req.params.id)
     .then((media) => {
       media.destroy();
       res.status(200).send({

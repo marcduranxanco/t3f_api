@@ -1,18 +1,18 @@
-const { Cards_Media, Cards, Media, Users } = require("../database/models");
+const { cards_media, cards, media, users } = require("../database/models");
 
-//CRUD MEDIA
-/* CARDSCONTROLLER DEFINITION */
-const CardMediaController = {};
+//CRUD media
+/* cardsCONTROLLER DEFINITION */
+const CardmediaController = {};
 
 //CREATE: required params: id_tmdb, id_custom_media, id_platform
-CardMediaController.create = async (req, res) => {
-    Cards_Media
+CardmediaController.create = async (req, res) => {
+    cards_media
     .create(req.body)
-    .then((cardMedia) => res.status(201).send(cardMedia))
+    .then((cardmedia) => res.status(201).send(cardmedia))
     .catch((err) => {
       console.error(err);
       res.status(500).send({
-        message: `There was a problem trying to register the cardMedia media`,
+        message: `There was a problem trying to register the cardmedia media`,
         error: err.message,
       });
     });
@@ -20,28 +20,28 @@ CardMediaController.create = async (req, res) => {
 
 //Read
 // Lectura de todos los datos
-CardMediaController.read = async (req, res) => {
+CardmediaController.read = async (req, res) => {
     //READ ALL
     if (!req.params.id) {
-        Cards_Media.findAll().then((cardMedia) => {
-        res.status(200).json(cardMedia);
+        cards_media.findAll().then((cardmedia) => {
+        res.status(200).json(cardmedia);
         });
     //READ ONE
     } else {
-        let cardMedia = await Cards_Media.findByPk(req.params.id);
-        if (!cardMedia) {
-        return res.status(400).send({ message: "This cardMedia doesn't exists" });
+        let cardmedia = await cards_media.findByPk(req.params.id);
+        if (!cardmedia) {
+        return res.status(400).send({ message: "This cardmedia doesn't exists" });
         } else {
-        return res.status(200).send(cardMedia);
+        return res.status(200).send(cardmedia);
         }
     }
 };
 
-CardMediaController.filter = async (req, res) => {
-  Cards_Media.findAll({
+CardmediaController.filter = async (req, res) => {
+  cards_media.findAll({
     include: [
-      { model: Media },
-      { model: Cards, include: [{ model: Users }] }
+      { model: media },
+      { model: cards, include: [{ model: users }] }
     ]
   }).then((cm) => {
     res.status(200).json(cm);
@@ -49,9 +49,9 @@ CardMediaController.filter = async (req, res) => {
 };
 
 //Update
-CardMediaController.update = async (req, res) => {
+CardmediaController.update = async (req, res) => {
     let cM = req.body;
-    await Cards_Media
+    await cards_media
       .findOne({
         where: { id: req.params.id },
       })
@@ -72,8 +72,8 @@ CardMediaController.update = async (req, res) => {
 
 //Delete
 //Es necesario que haga un delete?
-CardMediaController.delete = async (req, res) => {
-    await Cards_Media
+CardmediaController.delete = async (req, res) => {
+    await cards_media
     .findByPk(req.params.id)
     .then((cM) => {
       cM.destroy();
@@ -89,4 +89,4 @@ CardMediaController.delete = async (req, res) => {
     });
 };
 
-module.exports = CardMediaController;
+module.exports = CardmediaController;

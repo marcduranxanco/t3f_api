@@ -1,6 +1,6 @@
-const { Img } = require("../database/models");
+const { img } = require("../database/models");
 
-/* IMG CONTROLLER DEFINITION */
+/* img CONTROLLER DEFINITION */
 const ImgController = {};
 
 /**
@@ -15,7 +15,7 @@ ImgController.create = async (path_img) => {
   let image = await ImgController.read(path_img).then((image) => { return image});
 
   if(!image){ // The image doesn't exist. Creating the image
-    let image = await Img.create({ path : path_img }).then((image) => { return image });
+    let image = await img.create({ path : path_img }).then((image) => { return image });
     return image;
   }else{ // The image exists. List o all
     return image;
@@ -26,20 +26,20 @@ ImgController.create = async (path_img) => {
  * Read images from database
  * Example: let image = await ImgController.read(req.body.path_img).then((image) => {return image});
  * @param {*} path_img  If null, read all.
- * @return {Img} image
+ * @return {img} image
  */
 ImgController.read = async (path_img) => {
   console.log("ImgController.read: In");
     //READ ALL
     if (!path_img) {
       console.log("ImgController.read: Find all");
-      let images = await Img.findAll();
+      let images = await img.findAll();
       return images;
     }
     //READ ONE
     else {
       console.log("ImgController.read: Find One");
-      let image = await Img.findOne({ 
+      let image = await img.findOne({ 
         where: { path: path_img }
       });
       return image;
@@ -71,7 +71,7 @@ ImgController.delete = async (image) => {
 ImgController.update = async (image) => {
   console.log("ImgController.update: Updating img");
   try {
-      await Img.update(image);
+      await img.update(image);
       data = {
         code : 200,
         message :  "Success: Image updated",
